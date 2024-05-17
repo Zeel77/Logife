@@ -78,9 +78,14 @@ const page = () => {
     const [open, setOpen] = useState(false);
     const [deleteFlag, setDeleteFlag] = useState(true)
     const [token, setToken] = useState("")
+    var tkn=""
 
       useEffect(() => {
+        const tokenFunc = async ()=>{
+
+        }
         const tokenn = sessionStorage.getItem("authtoken")
+        tkn=tokenn;
         setToken(tokenn);
       }, [])
 
@@ -88,9 +93,11 @@ const page = () => {
 
       const getAllJobs=async ()=>{
         try {
+          const tokenn = sessionStorage.getItem("authtoken")
+
             var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/jobdetails/getalljobs', {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tokenn}`
             }
         });
         console.log(data)
@@ -128,10 +135,12 @@ const page = () => {
       });
 
     const handleEdit = async (row)=>{
+      const tokenn = sessionStorage.getItem("authtoken")
+
         const jid = row.jobId;
         var res = await axios.get(`https://logistic-backend.azurewebsites.net/api/jobdetails/id?jid=${jid}`,{
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tokenn}`
             }
         });
         setFormData({
@@ -155,10 +164,12 @@ const page = () => {
     }
 
     const handleDelete = async (row)=>{
+      const tokenn = sessionStorage.getItem("authtoken")
+
         const jid=row.jobId;
         var res = await axios.delete(`https://logistic-backend.azurewebsites.net/api/jobdetails/deletejob?jid=${jid}`,{
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tokenn}`
             }
         })
         setDeleteFlag(!deleteFlag);
@@ -208,10 +219,11 @@ const page = () => {
             pilotCode: formData.pilotCode || '',
             remarks: formData.remarks || ''
           };
+          const tokenn = sessionStorage.getItem("authtoken")
 
         var res = await axios.post('https://logistic-backend.azurewebsites.net/api/JobDetails/CreateJob',apiPayload,{
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${tokenn}`,
                 'Content-Type': 'application/json'
             }
         })
