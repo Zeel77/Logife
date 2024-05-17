@@ -18,26 +18,25 @@ import axios from 'axios';
 
 
 const page = () => {
-    
+    const searchParams = useSearchParams()
+ 
+    const jobId = searchParams.get('jobid')
   const [jobDetail, setJobDetail] = useState({})
   const [vesselDetail, setVesselDetail] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [token, setToken] = useState("")
-    const [jobid,setJobid] = useState("")
-
+    var tkn="";
       useEffect(() => {
         const tokenn = sessionStorage.getItem("authtoken")
+        tkn=tokenn;
         setToken(tokenn);
-        const searchParams = useSearchParams()
- 
-  const jobId = searchParams.get('jobid')
-  setJobid(jobid);
+       
       }, [])
     useEffect(() => {
       const getJobDetails = async ()=>{
         var {data} = await axios.get(`https://logistic-backend.azurewebsites.net/api/jobdetails/id?jid=${jobId}`, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log(data.data)
@@ -45,7 +44,7 @@ const page = () => {
 
         var {data} = await axios.get(`https://logistic-backend.azurewebsites.net/api/vessel/name?name=${data.data.vesselName}`, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log("vessel: ",data.data)
