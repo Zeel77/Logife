@@ -45,6 +45,7 @@ const Signin = () => {
             console.log(data.data)
             const authToken = data.data.token;
             sessionStorage.setItem("authtoken",authToken);
+            sessionStorage.setItem("uname",data.data.username);
             if(data.status===200){
                 (data.data.userType===1)?
                 router.push('/admindashboard'):
