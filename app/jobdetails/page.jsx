@@ -1,4 +1,3 @@
-'use client'
 import {React,useState,useEffect} from 'react'
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 import OpenWithOutlinedIcon from '@mui/icons-material/OpenWithOutlined';
