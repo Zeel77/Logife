@@ -95,7 +95,7 @@ const page = () => {
         try {
           const tokenn = sessionStorage.getItem("authtoken")
 
-            var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/jobdetails/getalljobs', {
+            var {data} = await axios.get('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/jobdetails/getalljobs', {
             headers: {
                 'Authorization': `Bearer ${tokenn}`
             }
@@ -138,7 +138,7 @@ const page = () => {
       const tokenn = sessionStorage.getItem("authtoken")
 
         const jid = row.jobId;
-        var res = await axios.get(`https://logistic-backend.azurewebsites.net/api/jobdetails/id?jid=${jid}`,{
+        var res = await axios.get(`http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/jobdetails/id?jid=${jid}`,{
             headers: {
                 'Authorization': `Bearer ${tokenn}`
             }
@@ -167,7 +167,7 @@ const page = () => {
       const tokenn = sessionStorage.getItem("authtoken")
 
         const jid=row.jobId;
-        var res = await axios.delete(`https://logistic-backend.azurewebsites.net/api/jobdetails/deletejob?jid=${jid}`,{
+        var res = await axios.delete(`http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/jobdetails/deletejob?jid=${jid}`,{
             headers: {
                 'Authorization': `Bearer ${tokenn}`
             }
@@ -221,7 +221,7 @@ const page = () => {
           };
           const tokenn = sessionStorage.getItem("authtoken")
 
-        var res = await axios.post('https://logistic-backend.azurewebsites.net/api/JobDetails/CreateJob',apiPayload,{
+        var res = await axios.post('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/JobDetails/CreateJob',apiPayload,{
             headers: {
                 'Authorization': `Bearer ${tokenn}`,
                 'Content-Type': 'application/json'
