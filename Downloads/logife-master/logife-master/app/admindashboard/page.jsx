@@ -63,7 +63,7 @@ const page = () => {
 
       useEffect(() => {
         const getTop5users = async ()=>{
-            var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/user/recentusers', {
+            var {data} = await axios.get('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/user/recentusers', {
             headers: {
                 'Authorization': `Bearer ${tkn}`
             }
@@ -74,7 +74,7 @@ const page = () => {
         getTop5users()
 
         const getAllUsers = async ()=>{
-            var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/user/getallusers', {
+            var {data} = await axios.get('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/user/getallusers', {
             headers: {
                 'Authorization': `Bearer ${tkn}`
             }

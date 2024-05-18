@@ -39,7 +39,7 @@ const Signin = () => {
         }
 
         try {
-            const {data} = await axios.post('https://logistic-backend.azurewebsites.net/api/auth/login', userRegistration, { headers: headers });
+            const {data} = await axios.post('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/auth/login', userRegistration, { headers: headers });
             // const token = response.data.data;
             // const status =await response.data.statusCode;
             console.log(data.data)

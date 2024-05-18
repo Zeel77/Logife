@@ -18,7 +18,7 @@ const BarChart = () => {
     useEffect(() => {
         const getAllJobs=async ()=>{
             try {
-                var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/jobdetails/getalljobs', {
+                var {data} = await axios.get('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/jobdetails/getalljobs', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

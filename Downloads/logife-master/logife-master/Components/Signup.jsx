@@ -38,7 +38,7 @@ const Signup = () => {
 
 
         try {
-            const response = await axios.post('https://logistic-backend.azurewebsites.net/api/auth/register', userRegistration, { headers: headers });
+            const response = await axios.post('http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/auth/register', userRegistration, { headers: headers });
             console.log(response.data);
         } catch (error) {
             console.log(error);
