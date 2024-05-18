@@ -13,14 +13,13 @@ import MonitorWeightOutlinedIcon from '@mui/icons-material/MonitorWeightOutlined
 import StraightenOutlinedIcon from '@mui/icons-material/StraightenOutlined';
 import Sidenav from '@/Components/Sidenav';
 import Header from '@/Components/Header';
-import { useSearchParams } from 'next/navigation'
 import axios from 'axios';
 
 
 const page = () => {
-    const searchParams = useSearchParams()
+    
  
-    const jobId = searchParams.get('jobid')
+    const jobId = "12"
   const [jobDetail, setJobDetail] = useState({})
   const [vesselDetail, setVesselDetail] = useState({})
     const [isLoading, setIsLoading] = useState(true)
