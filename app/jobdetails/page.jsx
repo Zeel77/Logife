@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import {React,useState,useEffect} from 'react'
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 import OpenWithOutlinedIcon from '@mui/icons-material/OpenWithOutlined';
@@ -13,31 +13,29 @@ import MonitorWeightOutlinedIcon from '@mui/icons-material/MonitorWeightOutlined
 import StraightenOutlinedIcon from '@mui/icons-material/StraightenOutlined';
 import Sidenav from '@/Components/Sidenav';
 import Header from '@/Components/Header';
-import { useSearchParams } from 'next/navigation'
 import axios from 'axios';
 
 
 const page = () => {
     
+ 
+    const jobId = "12"
   const [jobDetail, setJobDetail] = useState({})
   const [vesselDetail, setVesselDetail] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [token, setToken] = useState("")
-    const [jobid,setJobid] = useState("")
-
+    var tkn="";
       useEffect(() => {
         const tokenn = sessionStorage.getItem("authtoken")
+        tkn=tokenn;
         setToken(tokenn);
-        const searchParams = useSearchParams()
- 
-  const jobId = searchParams.get('jobid')
-  setJobid(jobid);
+       
       }, [])
     useEffect(() => {
       const getJobDetails = async ()=>{
         var {data} = await axios.get(`https://logistic-backend.azurewebsites.net/api/jobdetails/id?jid=${jobId}`, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log(data.data)
@@ -45,7 +43,7 @@ const page = () => {
 
         var {data} = await axios.get(`https://logistic-backend.azurewebsites.net/api/vessel/name?name=${data.data.vesselName}`, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log("vessel: ",data.data)

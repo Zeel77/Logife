@@ -52,9 +52,11 @@ const page = () => {
       const [activeusers, setActiveusers] = useState(0);
       const [inactiveusers, setInactiveusers] = useState(0);
       const [token, setToken] = useState("")
+      var tkn=""
 
       useEffect(() => {
         const tokenn = sessionStorage.getItem("authtoken")
+        tkn=tokenn;
         setToken(tokenn);
       }, [])
       
@@ -63,7 +65,7 @@ const page = () => {
         const getTop5users = async ()=>{
             var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/user/recentusers', {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log(data)
@@ -74,7 +76,7 @@ const page = () => {
         const getAllUsers = async ()=>{
             var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/user/getallusers', {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log(data)

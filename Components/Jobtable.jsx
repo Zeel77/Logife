@@ -41,13 +41,15 @@ const Jobtable = () => {
       ];
 
 
-    const [userId, setUserId] = useState(1);
+    const [userId, setUserId] = useState(2);
     const [jobList, setJobList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [token, setToken] = useState("")
+    var tkn="";
 
       useEffect(() => {
         const tokenn = sessionStorage.getItem("authtoken")
+        tkn=tokenn;
         setToken(tokenn);
       }, [])
     useEffect(() => {
@@ -55,7 +57,7 @@ const Jobtable = () => {
         try {
             var {data} = await axios.get('https://logistic-backend.azurewebsites.net/api/jobdetails/getalljobs', {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${tkn}`
             }
         });
         console.log(data)
