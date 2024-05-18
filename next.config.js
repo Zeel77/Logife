@@ -1,8 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    distDir: "build",
-    experimental: {
-        missingSuspenseWithCSRBailout: false,
-      }
+// next.config.js
+module.exports = {
+  reactStrictMode: true,
 };
-module.exports =  nextConfig;
