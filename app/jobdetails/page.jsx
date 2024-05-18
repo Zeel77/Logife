@@ -33,7 +33,7 @@ const page = () => {
       }, [])
     useEffect(() => {
       const getJobDetails = async ()=>{
-        var {data} = await axios.get(`https://logistic-backend.azurewebsites.net/api/jobdetails/id?jid=${jobId}`, {
+        var {data} = await axios.get(`http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/jobdetails/id?jid=${jobId}`, {
             headers: {
                 'Authorization': `Bearer ${tkn}`
             }
@@ -41,7 +41,7 @@ const page = () => {
         console.log(data.data)
         setJobDetail(data.data);
 
-        var {data} = await axios.get(`https://logistic-backend.azurewebsites.net/api/vessel/name?name=${data.data.vesselName}`, {
+        var {data} = await axios.get(`http://ec2-184-169-195-8.us-west-1.compute.amazonaws.com/api/vessel/name?name=${data.data.vesselName}`, {
             headers: {
                 'Authorization': `Bearer ${tkn}`
             }
